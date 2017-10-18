@@ -47,10 +47,12 @@ class ShakeEffect
 public class CameraShake : MonoBehaviour {
     
 	public Camera cameraToShake;
+	private Vector3 initialPos;
     private List<ShakeEffect> shakeEffects;
     
     void Start () {
         shakeEffects = new List<ShakeEffect>();
+		initialPos = cameraToShake.transform.position;
     }
 	
 	void Update ()
@@ -77,11 +79,11 @@ public class CameraShake : MonoBehaviour {
                 }
             }
             float shakeRange = 0.2f * strengthMultiplier;
-            cameraToShake.transform.position = new Vector3(cameraToShake.transform.position.x + Random.Range(-shakeRange, shakeRange), cameraToShake.transform.position.y + Random.Range(-shakeRange, shakeRange), -10);
+			cameraToShake.transform.position = new Vector3(initialPos.x + Random.Range(-shakeRange, shakeRange), initialPos.y + Random.Range(-shakeRange, shakeRange), -10);
         }
         else
         {
-            //cameraToShake.transform.position = new Vector3(0, 0, -10);
+			cameraToShake.transform.position = initialPos;
         }
     }
 
