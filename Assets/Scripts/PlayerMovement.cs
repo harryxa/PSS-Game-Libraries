@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 	private string axis_string = "";
 	private string jump_string = "";
 	private string player_name = "";
+
     /*.................................................
       IMPULSE BASED X,Y MOVEMENT
       (works much better using gamepad)
@@ -36,22 +37,27 @@ public class PlayerMovement : MonoBehaviour
         rig.drag = 5.0f;
         rig.freezeRotation = true;
         rig.gravityScale = 0.0f;
-		if (gameObject.tag == "Player") {
+
+		if (gameObject.tag == "Player")
+        {
 			axis_string = "Horizontal";
 			jump_string = "Jump";
 			player_name = "Player";
 		}
-		if (gameObject.tag == "Player2") {
+		if (gameObject.tag == "Player2")
+        {
 			axis_string = "Horizontal2";
 			jump_string = "P2 Jump";
 			player_name = "Player2";
 		}
-		if (gameObject.tag == "Player3") {
+		if (gameObject.tag == "Player3")
+        {
 			axis_string = "Horizontal3";
 			jump_string = "P3 Jump";
 			player_name = "Player3";
 		}
-		if (gameObject.tag == "Player4") {
+		if (gameObject.tag == "Player4")
+        {
 			axis_string = "Horizontal4";
 			jump_string = "P4 Jump";
 			player_name = "Player4";

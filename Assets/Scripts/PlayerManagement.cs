@@ -7,15 +7,15 @@ public class PlayerManagement : MonoBehaviour {
 
     public static PlayerManagement Instance;
 
-   public bool player1 = false;
+    public bool player1 = false;
     public bool player2 = false;
-   public  bool player3 = false;
+    public bool player3 = false;
     public bool player4 = false;
-    public int player1Lives = 3;
-    public int player2Lives = 3;
-    public int player3Lives = 3;
-    public int player4Lives = 3;
-    public int playerCount = 0;
+    public int  player1Lives = 3;
+    public int  player2Lives = 3;
+    public int  player3Lives = 3;
+    public int  player4Lives = 3;
+    public int  playerCount = 0;
 
     public GameObject player1Object;
     public GameObject player2Object;
@@ -46,9 +46,7 @@ public class PlayerManagement : MonoBehaviour {
                     player1 = true;
                     Debug.Log(player1);
                     playerCount++;
-                }
-                
-                
+                }           
             }
             else if(Input.GetButton("P1Cancel"))
             {
@@ -58,11 +56,7 @@ public class PlayerManagement : MonoBehaviour {
                     player1 = false;
                     
                     Debug.Log("PLayer 1 cancelled");
-                }
-                
-                
-                
-                
+                }            
             }
 
             if (Input.GetButton("P2Confirm"))
@@ -135,22 +129,15 @@ public class PlayerManagement : MonoBehaviour {
 
     void Awake()
     {
-        
        if (Instance == null)
        {
             DontDestroyOnLoad(this.gameObject);
             Instance = this;
-            //Debug.Log(player1);
         }
        else if (Instance != this)
         {
             Destroy(gameObject);
         }
-
-        //Debug.Log(player1);
-       // Debug.Log(player2);
-       // Debug.Log(player3);
-       // Debug.Log(player4);
     }
 
     void OnEnable()
@@ -171,38 +158,28 @@ public class PlayerManagement : MonoBehaviour {
             Debug.Log(player1);
             if (player1)
             {
-           // if (player1Lives != 0)
-           // {
                 Instantiate(player1Object);
                 player1Object.transform.position = new Vector3(-5f, 2.0f, 0.0f);
-           // }
             }
 
             if (player2)
             {
-          //  if (player2Lives != 0)
-        //    {
                 Instantiate(player2Object);
                 player2Object.transform.position = new Vector3(0f, 2.0f, 0.0f);
-         //   }
             }
 
             if (player3)
             {
-         //       if (player3Lives != 0)
-         //       {
-                    Instantiate(player3Object);
-                    player3Object.transform.position = new Vector3(5f, 2.0f, 0.0f);
-         //       }
+                Instantiate(player3Object);
+                player3Object.transform.position = new Vector3(5f, 2.0f, 0.0f);
             }
 
             if (player4)
             {
-         //           if (player4Lives != 0)
-          //          {
-                        Instantiate(player4Object);
-                        player4Object.transform.position = new Vector3(10f, 2.0f, 0.0f);
-         //           }
+
+                Instantiate(player4Object);
+                player4Object.transform.position = new Vector3(10f, 2.0f, 0.0f);
+
             }
         }
     }
