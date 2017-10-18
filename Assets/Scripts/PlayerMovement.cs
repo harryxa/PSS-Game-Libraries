@@ -83,7 +83,9 @@ public class PlayerMovement : MonoBehaviour
 				if(Input.GetButton(jump_string)  )
                 {
                     rig.AddForce(new Vector2(0, jump_force * rig.mass));
-					jump.Play ();
+                    //rig.velocity = new Vector2(0, jump_force * rig.mass);
+
+                    jump.Play ();
                 }
                 
             }
@@ -94,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rig.AddForce(new Vector2(0, -gravity * rig.mass));
-        rig.AddForce(impulse_force, ForceMode2D.Impulse);
+        rig.velocity = impulse_force;
         moveDirection = Vector2.zero;
         impulse_force = Vector2.zero;
     }
