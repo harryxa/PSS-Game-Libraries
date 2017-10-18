@@ -5,26 +5,27 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rig;
-
-    public float speed = 1.0f;
-    public float max_force = 20f;
-    public Vector2 moveDirection = Vector2.zero;
-    public float jump_height = 1.0f;
-    public float gravity = 50.0f;
-    public float jump_force = 50.0f;
-    public Vector2 impulse_force = Vector2.zero;
-	public AudioSource jump;
+    private Vector2 impulse_force = Vector2.zero;
+    private Vector2 moveDirection = Vector2.zero;
 
     private bool knockedOutRef;
-
     private bool grounded = false;
+
 	private string axis_string = "";
 	private string jump_string = "";
 	private string player_name = "";
 
+    public float speed = 1.0f;
+    public float max_force = 20f;
+    public float jump_height = 1.0f;
+    public float gravity = 50.0f;
+    public float jump_force = 50.0f;
+    public float player_height = 1.0f;
+	//public AudioSource jump;
+
     /*.................................................
-      IMPULSE BASED X,Y MOVEMENT
-      (works much better using gamepad)
+        
+      (works better using gamepad)
       .................................................
     */
 
@@ -63,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
 			player_name = "Player4";
 		}
 
+        
+
     }
 
 
@@ -83,9 +86,7 @@ public class PlayerMovement : MonoBehaviour
 				if(Input.GetButton(jump_string)  )
                 {
                     rig.AddForce(new Vector2(0, jump_force * rig.mass));
-                    //rig.velocity = new Vector2(0, jump_force * rig.mass);
-
-                    jump.Play ();
+                    //jumpaudio.Play ();
                 }
                 
             }
@@ -105,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
         {
             grounded = true;
         }
@@ -122,18 +123,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.tag == "Ground")
-        {
-            transform.parent = col.gameObject.transform;
-        }
-    }
-
-    //Not working, but could be?
-    //public bool isGrounded()
+    //void OnTriggerEnter2D(Collider2D col)
     //{
-    //    return Physics.Raycast(rig.transform.position, -Vector2.up, dist_to_ground);
+    //    if(col.gameObject.tag == "Ground")
+    //    {
+    //        transform.parent = col.gameObject.transform;
+    //    }
     //}
+
+
 
 }
